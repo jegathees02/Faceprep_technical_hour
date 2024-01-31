@@ -47,6 +47,19 @@ public class DeleteBeginning {
         }
         temp.next = null;
     }
+    
+    public void deletePos(int pos) {
+        Node temp = head;
+        int cnt = 1;
+        while (temp.next.next != null) {
+            if(cnt == pos){
+                temp.next = temp.next.next;
+                return;
+            }
+            temp = temp.next;
+            cnt++;
+        }
+    }
 
     public static void main(String[] args) {
         Scanner sc=  new Scanner(System.in);
@@ -57,7 +70,12 @@ public class DeleteBeginning {
             db.insert(data);
             n--;
         }
+        int pos = sc.nextInt();
+        // int val = sc.nextInt();
         // db.printAll();
+        db.printAll();
+        db.deletePos(pos);
+        db.printAll();
         db.deleteBeginning();
         db.printAll();
         db.deleteEnd();
